@@ -1,0 +1,144 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cerveza y Fútbol</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #d32f2f;
+            color: yellow;
+            padding: 15px;
+            text-align: center;
+            font-size: 48px;
+            font-weight: 900;
+            width: 100%;
+            position: sticky;
+            top: 0;
+        }
+        .search-box {
+            margin-top: 0;
+            text-align: center;
+        }
+        .search-box input {
+            padding: 10px;
+            width: 50%;
+            border: 3px groove #000000;
+            border-radius: 30px;
+            font-size: 15px;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 12px 12px 25px rgba(255,0,0,0.5);
+        }
+        .noticia {
+            border-bottom: 5px inset #000000;
+            padding: 15px 0;
+            display: flex;
+            align-items: center; /* Alineación horizontal */
+        }
+        .noticia img {
+            width: 150px; /* Ancho de la imagen */
+            height: 150px; /* Alto de la imagen */
+            margin-right: 15px; /* Espacio entre la imagen y el título */
+            border-radius: 5px;
+        }
+        .noticia h2 {
+            color: #d32f2f;
+            margin: 0; /* Eliminar el margen por defecto */
+            font-size: 36px;
+        }
+        .noticia p {
+            color: #666;
+            font-size: 24px;
+        }
+        .noticia a {
+            text-decoration: none;
+            color: #d32f2f;
+            font-weight: bold;
+        }
+                /* Media Queries para móviles */
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px; /* Reducir tamaño de la fuente para pantallas más pequeñas */
+            }
+            header {
+                font-size: 45px; /* Ajustar tamaño de la cabecera */
+                width: 100%;
+            }
+            .container {
+                width: 100%; /* Hacer el contenedor más flexible */
+                padding: 15px;
+                box-shadow: 20px 20px 20px rgba(255,0,0,0.6);
+            }
+            .noticia img {
+                width: 150px;
+                height: 150px;
+            }
+            .noticia h2 {
+                font-size: 25px;
+            }
+            .noticia p {
+                font-size: 15px;
+            }
+            .search-box input {
+                font-size: 15px;
+            }
+    </style>
+    <script>
+        function buscarNoticias() {
+            let input = document.getElementById('buscar').value.toLowerCase();
+            let noticias = document.getElementsByClassName('noticia');
+            
+            for (let i = 0; i < noticias.length; i++) {
+                let titulo = noticias[i].getElementsByTagName('h2')[0].innerText.toLowerCase();
+                if (titulo.includes(input)) {
+                    noticias[i].style.display = "block";
+                } else {
+                    noticias[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        Cerveza y Fútbol
+        <div class="search-box">
+            <input type="text" id="buscar" placeholder="Buscar noticias..." onkeyup="buscarNoticias()">
+        </div>
+    </header>
+    <div class="container">
+        <div class="noticia"> 
+            <img src="img/GuiroF.jpg" alt="Imagen de la noticia 1">
+            <div>
+                <h2><a href="noticia1.html">El lateral de moda de CD El Casar</a></h2>
+                <p>Por sus balones y no hablando en terminos futbolisticos, Roig se convierte en la nueva estrella del pueblo Alcarreño.</p>
+            </div>
+        </div>
+        <div class="noticia">
+            <img src="img/Fran2.jpg" alt="Imagen de la noticia 2">
+            <div>
+                <h2><a href="noticia2.html">El gran misterio de Fran Anton</a></h2>
+                <p>El gran casareño Francisco, lleva sin ser determinante en varios partidos en el juvenil. ¿A qué se debe esto?</p>
+            </div>
+        </div>
+        <div class="noticia">
+            <img src="img/Casar.jpg" alt="Imagen de la noticia 3">
+            <div>
+                <h2><a href="noticia3.html">Play Offs: El Casar se pone a prueba</a></h2>
+                <p>El Casar se encuentra en el punto de mira, dispuesto a jugar el momento más importante de la temporada. ¿Está preparado para el reto?</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
