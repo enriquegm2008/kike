@@ -1,16 +1,28 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cerveza y Fútbol</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #000000;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(-45deg, #000000, #1a1a1a, #222, #333);
+            background-size: 400% 400%;
+            animation: fondoAnimado 10s ease infinite;
             margin: 0;
             padding: 0;
+            display: none; /* Oculta la página hasta que se verifique la contraseña */
         }
+
+        @keyframes fondoAnimado {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         header {
             background: #d32f2f;
             color: yellow;
@@ -21,68 +33,98 @@
             width: 100%;
             position: sticky;
             top: 0;
+            box-shadow: 0px 5px 10px rgba(255, 255, 0, 0.5);
         }
+
         .search-box {
             margin-top: 0;
             text-align: center;
         }
+
         .search-box input {
             padding: 10px;
             width: 50%;
             border: 3px groove #000000;
             border-radius: 30px;
             font-size: 15px;
+            background: #fff;
+            transition: 0.3s;
         }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #d32f2f;
+            box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.7);
+        }
+
         .container {
             width: 80%;
             margin: 20px auto;
             background: white;
             padding: 20px;
             box-shadow: 12px 12px 25px rgba(255,0,0,0.5);
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
         }
+
         .noticia {
             border-bottom: 5px inset #000000;
             padding: 15px 0;
             display: flex;
             align-items: center; /* Alineación horizontal */
         }
+
         .noticia img {
-            width: 150px; /* Ancho de la imagen */
-            height: 150px; /* Alto de la imagen */
-            margin-right: 15px; /* Espacio entre la imagen y el título */
+            width: 150px;
+            height: 150px;
+            margin-right: 15px;
             border-radius: 5px;
+            transition: transform 0.3s ease;
         }
+
+        .noticia img:hover {
+            transform: scale(1.1);
+        }
+
         .noticia h2 {
             color: #d32f2f;
-            margin: 0; /* Eliminar el margen por defecto */
+            margin: 0;
             font-size: 36px;
         }
+
         .noticia p {
             color: #666;
             font-size: 24px;
         }
+
         .noticia a {
             text-decoration: none;
             color: #d32f2f;
             font-weight: bold;
+            transition: 0.3s;
         }
-                /* Media Queries para móviles */
+
+        .noticia a:hover {
+            color: yellow;
+        }
+
+        /* Media Queries para móviles */
         @media (max-width: 768px) {
             body {
-                font-size: 16px; /* Reducir tamaño de la fuente para pantallas más pequeñas */
+                font-size: 16px;
             }
             header {
-                font-size: 45px; /* Ajustar tamaño de la cabecera */
+                font-size: 45px;
                 width: 100%;
             }
             .container {
-                width: 100%; /* Hacer el contenedor más flexible */
+                width: 100%;
                 padding: 15px;
                 box-shadow: 20px 20px 20px rgba(255,0,0,0.6);
             }
             .noticia img {
-                width: 150px;
-                height: 150px;
+                width: 120px;
+                height: 120px;
             }
             .noticia h2 {
                 font-size: 25px;
@@ -93,8 +135,26 @@
             .search-box input {
                 font-size: 15px;
             }
+        }
     </style>
     <script>
+        function verificarContraseña() {
+            let contraseña = prompt("🔒 Introduce la contraseña para acceder:");
+            if (contraseña === "1234") {  // Cambia "1234" por tu contraseña real
+                document.body.style.display = "block"; // Muestra la página
+                setTimeout(() => {
+                    document.querySelector(".container").style.opacity = "1";
+                }, 100);
+            } else {
+                alert("❌ Contraseña incorrecta. Acceso denegado.");
+                window.location.href = "https://google.com"; // Redirige si la clave es incorrecta
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            verificarContraseña();
+        });
+
         function buscarNoticias() {
             let input = document.getElementById('buscar').value.toLowerCase();
             let noticias = document.getElementsByClassName('noticia');
@@ -122,7 +182,7 @@
             <img src="Guiro.jpg" alt="Imagen de la noticia 1">
             <div>
                 <h2><a href="noticia1.html">El lateral de moda de CD El Casar</a></h2>
-                <p>Por sus balones y no hablando en terminos futbolisticos, Roig se convierte en la nueva estrella del pueblo Alcarreño.</p>
+                <p>Por sus balones y no hablando en términos futbolísticos, Roig se convierte en la nueva estrella del pueblo Alcarreño.</p>
             </div>
         </div>
         <div class="noticia">
