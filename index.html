@@ -26,14 +26,15 @@
         header {
             background: #d32f2f;
             color: yellow;
-            padding: 15px;
-            text-align: center;
+            padding: 15px;   
             font-size: 48px;
             font-weight: 900;
             width: 100%;
             position: sticky;
             top: 0;
             box-shadow: 0px 5px 10px rgba(255, 255, 0, 0.5);
+            display: flex;
+            justify-content: space-between;
         }
 
         .search-box {
@@ -43,18 +44,46 @@
 
         .search-box input {
             padding: 10px;
-            width: 50%;
+            width: 200%;
             border: 3px groove #000000;
             border-radius: 30px;
             font-size: 15px;
             background: #fff;
             transition: 0.3s;
+            align-items: center;
+            margin-left: -100px;
         }
 
         .search-box input:focus {
             outline: none;
             border-color: #d32f2f;
             box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.7);
+        }
+
+        .decorado-boton {
+            padding: 12px 25px;
+            background-color: yellow; /* Color de fondo */
+            color: red; /* Color del texto */
+            border: none; /* Sin borde */
+            border-radius: 20px; /* Bordes redondeados */
+            font-size: 20px; /* Tamaño de fuente */
+            font-weight: bold; /* Negrita */
+            cursor: pointer; /* Cursor tipo puntero */
+            text-transform: uppercase; /* Texto en mayúsculas */
+            transition: all 0.3s ease; /* Transición suave para efectos */
+        }
+
+        /* Efectos cuando el botón es hover (cuando el ratón pasa sobre él) */
+        .decorado-boton:hover {
+            background-color: #FDFD96; /* Cambia el color de fondo al pasar el mouse */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave alrededor del botón */
+            transform: translateY(-5px); /* Levanta el botón un poco */
+        }
+
+        /* Efecto al hacer clic (presionar el botón) */
+        .decorado-boton:active {
+            transform: translateY(2px); /* El botón se "presiona" hacia abajo */
+            box-shadow: none; /* Elimina la sombra */
         }
 
         .container {
@@ -114,8 +143,10 @@
                 font-size: 16px;
             }
             header {
-                font-size: 45px;
+                font-size: 40px;
                 width: 100%;
+                flex-direction: column;
+                text-align: center;
             }
             .container {
                 width: 100%;
@@ -134,7 +165,19 @@
             }
             .search-box input {
                 font-size: 15px;
+                justify-content: center;
+                width: 80%;
+                margin-left: 4%;
             }
+            .decorado-boton {
+                width: 30%; /* El botón ocupará todo el ancho disponible en pantallas pequeñas */
+                height: 5%;
+                padding: 15px; /* Aumenta el padding para hacerlo más grande y fácil de tocar en pantallas pequeñas */
+                font-size: 18px; /* Aumenta el tamaño de la fuente en móviles */
+                text-align: center; /* Centra el texto dentro del botón */
+                margin-top: 5%
+                }
+
         }
     </style>
     <script>
@@ -175,6 +218,9 @@
         Cerveza y Fútbol
         <div class="search-box">
             <input type="text" id="buscar" placeholder="Buscar noticias..." onkeyup="buscarNoticias()">
+        </div>
+        <div
+            <button type="button" onclick="window.location.href='https://www.ejemplo.com';" class="decorado-boton">login</button>
         </div>
     </header>
     <div class="container">
