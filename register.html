@@ -71,28 +71,34 @@
             color: black;
             padding: 12px 20px;
             border: none;
-            border-radius: 5px;
+            border-radius: 15px;
             font-size: 18px;
             cursor: pointer;
-            width: 100%;
+            width: 70%;
             transition: background 0.3s ease;
         }
 
         .register-box button:hover {
-            background: #fbc02d;
+            background: #FF6961;
         }
 
         .register-box .login {
             margin-top: 20px;
             font-size: 14px;
-            color: #ffeb3b;
+            color: #d32f2f;
             display: block;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .register-box .login:hover {
-            color: #d32f2f;
+            color: #E5BE01;
+        }
+
+        .error-message {
+            color: red;
+            display: none;
+            margin-top: 15px;
         }
 
         .success-message {
@@ -100,7 +106,6 @@
             display: none;
             margin-top: 15px;
         }
-
     </style>
 </head>
 <body>
@@ -110,7 +115,7 @@
         <input type="password" id="password" placeholder="Contraseña" required>
         <input type="password" id="confirm-password" placeholder="Confirmar Contraseña" required>
         <button type="submit" onclick="register()">Registrarse</button>
-        <p id="error-message" class="error-message" style="color:red;">Las contraseñas no coinciden.</p>
+        <p id="error-message" class="error-message">Las contraseñas no coinciden.</p>
         <p id="success-message" class="success-message">¡Registro exitoso! Puedes iniciar sesión.</p>
         <a href="login.html" class="login">¿Ya tienes cuenta? Inicia sesión</a>
     </div>
@@ -118,16 +123,16 @@
     <script>
         // Función de registro
         function register() {
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-            const confirmPassword = document.getElementById("confirm-password").value;
+            const email = document.getElementById("email").value.trim(); // Eliminar espacios al principio y final
+            const password = document.getElementById("password").value.trim(); // Eliminar espacios
+            const confirmPassword = document.getElementById("confirm-password").value.trim(); // Eliminar espacios
             const errorMessage = document.getElementById("error-message");
             const successMessage = document.getElementById("success-message");
 
             // Verificar que las contraseñas coinciden
             if (password !== confirmPassword) {
-                errorMessage.style.display = "block";
-                successMessage.style.display = "none";
+                errorMessage.style.display = "block"; // Mostrar error si no coinciden
+                successMessage.style.display = "none"; // Ocultar mensaje de éxito
                 return;
             }
 
@@ -136,8 +141,8 @@
             localStorage.setItem("userPassword", password);
 
             // Mostrar mensaje de éxito y ocultar el error
-            errorMessage.style.display = "none";
-            successMessage.style.display = "block";
+            errorMessage.style.display = "none"; // Ocultar error
+            successMessage.style.display = "block"; // Mostrar éxito
 
             // Redirigir al login después de unos segundos
             setTimeout(function() {
