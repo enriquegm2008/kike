@@ -129,8 +129,17 @@
             const errorMessage = document.getElementById("error-message");
             const successMessage = document.getElementById("success-message");
 
+            // Verificar que los campos no estén vacíos
+            if (email === "" || password === "" || confirmPassword === "") {
+                errorMessage.textContent = "Por favor, completa todos los campos.";
+                errorMessage.style.display = "block"; // Mostrar error si algún campo está vacío
+                successMessage.style.display = "none"; // Ocultar mensaje de éxito
+                return;
+            }
+
             // Verificar que las contraseñas coinciden
             if (password !== confirmPassword) {
+                errorMessage.textContent = "Las contraseñas no coinciden.";
                 errorMessage.style.display = "block"; // Mostrar error si no coinciden
                 successMessage.style.display = "none"; // Ocultar mensaje de éxito
                 return;
